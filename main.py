@@ -1,3 +1,6 @@
+from click import option
+
+
 def average(sum=1, length=1):
     return sum / length
 
@@ -44,5 +47,31 @@ def grades_average(n=1):
 
     return sum / n, over_85, risk_zone
 
+def max_and_min(n=1):
+    numbers = []
+    for i in range(n):
+        num = int(input('Ingrese el número: '))
+        numbers.append(num)
 
+    frequency = {}
+    for i in numbers:
+        if i in frequency:
+            frequency[i] += 1
+        else:
+            frequency[i] = 1
+
+    return max(numbers), min(numbers), frequency
+
+def operations(option, num1, num2):
+    match option:
+        case '1':
+            return num1 + num2
+        case '2':
+            return num1 - num2
+        case '3':
+            return num1 * num2
+        case '4':
+            return num1 / num2
+        case _:
+            return 'Opción invalida'
 
