@@ -60,18 +60,23 @@ def max_and_min(n=1):
         else:
             frequency[i] = 1
 
-    return max(numbers), min(numbers), frequency
+    repeated_numbers = 0
+    for i in frequency:
+        if i > 1:
+            repeated_numbers += 1
+
+    return max(numbers), min(numbers), repeated_numbers
 
 def operations(option, num1, num2):
     match option:
         case '1':
-            return num1 + num2
+            return f'El resultado de la suma es: {num1 + num2}'
         case '2':
-            return num1 - num2
+            return f'El resultado de la resta es: {num1 - num2}'
         case '3':
-            return num1 * num2
+            return f'El resultado de la multiplicación es: {num1 * num2}'
         case '4':
-            return num1 / num2
+            return f' El resultado de la división es: {num1 / num2}'
         case _:
             return 'Opción invalida'
 
@@ -87,6 +92,7 @@ while True:
     print()
 
     option = input('Ingrese la opción que desea: ')
+    print()
 
     match option:
         case '1':
@@ -125,10 +131,25 @@ while True:
             print()
 
         case '5':
-            pass
+            n = int(input('Ingrese la cantidad de números a evaluar: '))
+            max_and_min = max_and_min(n)
+            print(f'El número mayor es: {max_and_min[0]}')
+            print(f'El número menor es: {max_and_min[1]}')
+            print(f'La cantidad de números repetidos es: {max_and_min[2]}')
+            print()
 
         case '6':
-            pass
+            print('Operaciones:')
+            print('1. Suma')
+            print('2. Resta')
+            print('3. Multiplicación')
+            print('4. División')
+
+            operation = input('Ingrese la operación que desea: ')
+            number1 = float(input('Ingrese el primer número: '))
+            number2 = float(input('Ingrese el segundo número: '))
+            print()
+            print(operations(operation, number1, number2))
 
         case '7':
             print('Saliendo del programa...')
