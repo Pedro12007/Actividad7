@@ -8,7 +8,12 @@ def addition(n=1):
     zeros = 0
     multiple_of_3 = 0
     for i in range(n):
-        number = float(input(f'Ingrese el número ({i+1}): '))
+        while True:
+            try:
+                number = float(input(f'Ingrese el número ({i+1}): '))
+                break
+            except ValueError:
+                print('Error. Ingrese un número.')
         sum += number
         if number > 0:
             positive += 1
@@ -38,7 +43,17 @@ def grades_average(n=1):
     over_85 = 0
     risk_zone = 0
     for i in range(n):
-        grade = int(input('Ingrese las nota: '))
+        while True:
+            try:
+                grade = int(input('Ingrese las nota: '))
+                if grade < 0 or grade > 100:
+                    raise Exception('Fuera del rango establecido')
+                break
+            except ValueError:
+                print('Error. Ingrese un número entero.')
+            except Exception:
+                print('Número fuera de rango.')
+
         sum += grade
         if grade >= 85:
             over_85 += 1
@@ -50,7 +65,12 @@ def grades_average(n=1):
 def max_and_min(n=1):
     numbers = []
     for i in range(n):
-        num = int(input('Ingrese el número: '))
+        while True:
+            try:
+                num = int(input('Ingrese un número: '))
+                break
+            except ValueError:
+                print('Error. Ingrese un número entero.')
         numbers.append(num)
 
     frequency = {}
@@ -76,7 +96,10 @@ def operations(option, num1, num2):
         case '3':
             return f'El resultado de la multiplicación es: {num1 * num2}'
         case '4':
-            return f' El resultado de la división es: {num1 / num2}'
+            try:
+                return f'El resultado de la división es: {num1 / num2}'
+            except ZeroDivisionError:
+                return 'Error. No se puede dividir entre 0.'
         case _:
             return 'Opción invalida'
 
@@ -96,7 +119,12 @@ while True:
 
     match option:
         case '1':
-            n = int(input('Ingrese la cantidad de números que desea sumar: '))
+            while True:
+                try:
+                    n = int(input('Ingrese la cantidad de números que desea sumar: '))
+                    break
+                except ValueError:
+                    print('Error. Ingrese un número entero.')
             result = addition(n)
             print()
             print(f'La suma de los números es: {result[0]}')
@@ -108,14 +136,31 @@ while True:
             print()
 
         case '2':
-            base = float(input('Ingrese la base del rectángulo (cm): '))
-            height = float(input('Ingrese la altura del rectángulo (cm): '))
+            while True:
+                try:
+                    base = float(input('Ingrese la base del rectángulo (cm): '))
+                    break
+                except ValueError:
+                    print('Error. Ingrese un número.')
+            while True:
+                try:
+                    height = float(input('Ingrese la altura del rectángulo (cm): '))
+                    break
+                except ValueError:
+                    print('Error. Ingrese un número.')
+
             print(f'El area del rectángulo es de: {rectangle_area(base, height)}cm')
             print(f'El perímetro del rectángulo es de {rectangle_perimeter(base, height)} cm')
             print()
 
         case '3':
-            number = int(input('Ingrese un número: '))
+            while True:
+                try:
+                    number = int(input('Ingrese un número: '))
+                    break
+                except ValueError:
+                    print('Error. Ingrese un número.')
+
             if prime_number(number):
                 print(f'{number} es primo.')
             else:
@@ -123,7 +168,13 @@ while True:
             print()
 
         case '4':
-            n = int(input('Ingrese la cantidad de notas: '))
+            while True:
+                try:
+                    n = int(input('Ingrese la cantidad de notas: '))
+                    break
+                except ValueError:
+                    print('Error. Ingrese un número.')
+
             results = grades_average(n)
             print(f'El promedio de las notas es: {results[0]}')
             print(f'La cantidad de notas iguales o sobre 85 puntos son: {results[1]}')
@@ -131,7 +182,13 @@ while True:
             print()
 
         case '5':
-            n = int(input('Ingrese la cantidad de números a evaluar: '))
+            while True:
+                try:
+                    n = int(input('Ingrese la cantidad de números a evaluar: '))
+                    break
+                except ValueError:
+                    print('Error. Ingrese un número.')
+
             max_and_min = max_and_min(n)
             print(f'El número mayor es: {max_and_min[0]}')
             print(f'El número menor es: {max_and_min[1]}')
@@ -145,9 +202,25 @@ while True:
             print('3. Multiplicación')
             print('4. División')
 
-            operation = input('Ingrese la operación que desea: ')
-            number1 = float(input('Ingrese el primer número: '))
-            number2 = float(input('Ingrese el segundo número: '))
+            while True:
+                try:
+                    operation = input('Ingrese la operación que desea: ')
+                    break
+                except ValueError:
+                    print('Error. Ingrese un número.')
+            while True:
+                try:
+                    number1 = float(input('Ingrese el primer número: '))
+                    break
+                except ValueError:
+                    print('Error. Ingrese un número.')
+            while True:
+                try:
+                    number2 = float(input('Ingrese el segundo número: '))
+                    break
+                except ValueError:
+                    print('Error. Ingrese un número.')
+
             print()
             print(operations(operation, number1, number2))
 
