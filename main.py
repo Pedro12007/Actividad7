@@ -90,16 +90,39 @@ while True:
 
     match option:
         case '1':
-            pass
+            n = int(input('Ingrese la cantidad de números que desea sumar: '))
+            result = addition(n)
+            print()
+            print(f'La suma de los números es: {result[0]}')
+            print(f'El promedio de los números sumados es: {average(result[0], n)}')
+            print(f'La cantidad de positivos es: {result[1]}')
+            print(f'La cantidad de negativos es: {result[2]}')
+            print(f'La cantidad de ceros es: {result[3]}')
+            print(f'La cantidad de múltiplos de 3 es: {result[4]}')
+            print()
 
         case '2':
-            pass
+            base = float(input('Ingrese la base del rectángulo (cm): '))
+            height = float(input('Ingrese la altura del rectángulo (cm): '))
+            print(f'El area del rectángulo es de: {rectangle_area(base, height)}cm')
+            print(f'El perímetro del rectángulo es de {rectangle_perimeter(base, height)} cm')
+            print()
 
         case '3':
-            pass
+            number = int(input('Ingrese un número: '))
+            if prime_number(number):
+                print(f'{number} es primo.')
+            else:
+                print(f'{number} no es primo.')
+            print()
 
         case '4':
-            pass
+            n = int(input('Ingrese la cantidad de notas: '))
+            results = grades_average(n)
+            print(f'El promedio de las notas es: {results[0]}')
+            print(f'La cantidad de notas iguales o sobre 85 puntos son: {results[1]}')
+            print(f'La cantidad de notas debajo de 60 puntos son: {results[2]}')
+            print()
 
         case '5':
             pass
